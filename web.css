@@ -63,3 +63,6 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0;color:var
 code.hash{word-break:break-all;font-size:.8em}
 hr{border:0;border-top:1px solid var(--line);margin:32px 0}
 table.days{border-collapse:collapse;margin:6px 0 18px}table.days td{border-bottom:1px solid var(--line);padding:4px 18px 4px 0}
+.key code{font-size:1.5rem;padding:8px 14px;letter-spacing:.06em;user-select:all}
+input,select{background:var(--bg2);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:inherit;margin:2px 0}
+button{font:inherit;cursor:pointer}.lic{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;background:var(--panel)}.lic.off{opacity:.55}.lic button{background:var(--bg2);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:2px 10px;margin:4px 0}

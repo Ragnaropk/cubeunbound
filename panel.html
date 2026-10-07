@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel · Cube Unbound</title>
+<meta name="description" content="Panel de licencias.">
+<meta property="og:title" content="Panel · Cube Unbound">
+<meta property="og:description" content="Panel de licencias.">
+<meta property="og:image" content="https://ragnaropk.github.io/cubeunbound/img/portada.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/favicon.png">
+<link rel="stylesheet" href="web.css">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><img src="img/logo_small.jpg" alt=""><span>Cube Unbound</span></a>
+  <nav><a href="index.html">Inicio</a><a href="descargar.html">Descargar</a><a href="novedades.html">Novedades</a><a href="comprar.html">Comprar</a><a href="https://ragnaropk.github.io/cube-unbound-wiki/" rel="noopener">Wiki</a><a class="dc" href="https://discord.gg/6Q6FCpYM77" rel="noopener">Discord</a><a class="lang" href="en.html">EN</a></nav>
+</div></header>
+<main>
+<section class="wrap"><h1>Panel de licencias</h1><p class="dim">Página privada: sin enlazar y sin indexar. El token se guarda sólo en este navegador.</p><p><input id="tok" type="password" placeholder="Token del panel" size="40"> <button class="btn" id="entrar">Entrar</button></p><div id="res" class="pillars"></div><h2>Crear una clave</h2><p class="small dim">Para regalos, probadores o quien pagó por otro medio.</p><p><input id="n" placeholder="Nombre (sale en el juego)"> <input id="m" placeholder="Correo"> <select id="ed"><option value="base">base</option><option value="apoyo">apoyo</option><option value="regalo">regalo</option><option value="probador">probador</option></select> <input id="pcs" type="number" value="3" min="1" max="10" style="width:4em"> PCs <input id="nota" placeholder="Nota"> <button class="btn" id="crear">Crear</button></p><p id="nueva"></p><h2>Licencias</h2><p><input id="q" placeholder="Buscar por clave, nombre o correo" size="40"> <button class="btn ghost" id="buscar">Buscar</button></p><div id="lista"></div></section><script>(function(){var api="https://cube-unbound-tienda.neurostudios-contacto.workers.dev";var T="";try{T=localStorage.getItem("cu_admin")||""}catch(x){}
+var $=function(i){return document.getElementById(i)};$("tok").value=T;
+function esc(t){var d=document.createElement("div");d.textContent=t==null?"":String(t);return d.innerHTML}
+function call(m,p,b){return fetch(api+p,{method:m,headers:{"authorization":"Bearer "+T,"content-type":"application/json"},body:b?JSON.stringify(b):undefined}).then(function(r){return r.json()})}
+function fecha(ms){return ms?new Date(ms).toLocaleString("es-MX"):""}
+function resumen(){call("GET","/admin/resumen").then(function(d){if(!d.ok){$("res").innerHTML="<p>Token incorrecto.</p>";return}
+ var v=0,n=0;d.licencias.forEach(function(l){n+=l.n;v+=l.importe||0});
+ $("res").innerHTML='<div><h3>Licencias</h3><p class="price">'+n+'</p><p>'+d.licencias.map(function(l){return esc(l.edicion)+" ("+esc(l.origen)+"): "+l.n}).join(" · ")+'</p></div>'+
+ '<div><h3>Cobrado</h3><p class="price">'+(v/100).toFixed(2)+' USD</p><p>por Stripe</p></div>'+
+ '<div><h3>PCs activados</h3><p class="price">'+d.activaciones+'</p><p>'+d.descargas+' descargas · '+d.revocadas+' revocadas</p></div>'+
+ '<div><h3>Servidor</h3><p>Zip: '+esc(d.zip||"ninguno")+'</p><p>Firma: '+(d.firma?"lista":"FALTA LICENCIA_PRIVADA")+' · Stripe: '+(d.stripe?"listo":"sin configurar")+'</p></div>';buscar()})}
+function buscar(){call("GET","/admin/licencias?q="+encodeURIComponent($("q").value)).then(function(d){if(!d.ok)return;
+ $("lista").innerHTML=d.licencias.map(function(l){return '<div class="lic'+(l.revocada?" off":"")+'"><b><code>'+esc(l.clave)+'</code></b> · '+esc(l.nombre)+' · '+esc(l.email)+' · '+esc(l.edicion)+
+ ' · '+esc(l.origen)+(l.importe?' · '+(l.importe/100).toFixed(2)+' '+esc(l.moneda):'')+'<br><span class="dim small">'+fecha(l.creada)+(l.nota?' · '+esc(l.nota):'')+' · '+l.descargas+' descargas · PCs '+l.equipos.length+'/'+l.pcs+'</span>'+
+ l.equipos.map(function(q){return '<div class="small">PC <code>'+esc(q.equipo.slice(0,8))+'</code> '+esc(q.version)+' · '+fecha(q.primera)+' <button data-lib="'+esc(l.clave)+'" data-eq="'+esc(q.equipo)+'">Liberar</button></div>'}).join("")+
+ '<div><button data-rev="'+esc(l.clave)+'" data-on="'+(l.revocada?0:1)+'">'+(l.revocada?"Reactivar":"Revocar (devolución)")+'</button></div></div>'}).join("")||"<p>Nada.</p>"})}
+document.addEventListener("click",function(ev){var b=ev.target;
+ if(b.dataset.lib&&confirm("¿Liberar ese PC?"))call("POST","/admin/liberar",{clave:b.dataset.lib,equipo:b.dataset.eq}).then(resumen);
+ if(b.dataset.rev&&confirm(b.dataset.on==="1"?"¿Revocar esta clave? Dejará de activarse y de descargar.":"¿Reactivar esta clave?"))call("POST","/admin/revocar",{clave:b.dataset.rev,revocada:b.dataset.on==="1"}).then(resumen)});
+$("entrar").onclick=function(){T=$("tok").value.trim();try{localStorage.setItem("cu_admin",T)}catch(x){}resumen()};
+$("buscar").onclick=buscar;
+$("crear").onclick=function(){call("POST","/admin/licencias",{nombre:$("n").value,email:$("m").value,edicion:$("ed").value,pcs:+$("pcs").value||3,nota:$("nota").value}).then(function(d){
+ $("nueva").innerHTML=d.ok?'Clave creada: <code>'+esc(d.clave)+'</code> · descarga: <code>'+esc(api+"/descargar?clave="+d.clave)+'</code>':"No se pudo crear";resumen()})};
+if(T)resumen();})();</script>
+</main>
+<footer><div class="wrap">
+  <div class="social"><a href="https://ragnaropk.github.io/cube-unbound-wiki/" rel="noopener">Wiki</a><a href="https://discord.gg/6Q6FCpYM77" rel="noopener">Discord</a><a href="https://www.reddit.com/r/CubeUnbound/" rel="noopener">Reddit</a></div>
+  <p><a href="privacidad.html">Aviso de privacidad</a> · <a href="terminos.html">Términos de venta</a></p>
+  <p class="dim">Cube Unbound 2026</p>
+</div></footer>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "2e7e2164b6b44c80b615bdc271c537fc"}'></script>
+</body>
+</html>

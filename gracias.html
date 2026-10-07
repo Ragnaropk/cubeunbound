@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gracias · Cube Unbound</title>
+<meta name="description" content="Tu compra de Cube Unbound.">
+<meta property="og:title" content="Gracias · Cube Unbound">
+<meta property="og:description" content="Tu compra de Cube Unbound.">
+<meta property="og:image" content="https://ragnaropk.github.io/cubeunbound/img/portada.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/favicon.png">
+<link rel="stylesheet" href="web.css">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><img src="img/logo_small.jpg" alt=""><span>Cube Unbound</span></a>
+  <nav><a href="index.html">Inicio</a><a href="descargar.html">Descargar</a><a href="novedades.html">Novedades</a><a href="comprar.html">Comprar</a><a href="https://ragnaropk.github.io/cube-unbound-wiki/" rel="noopener">Wiki</a><a class="dc" href="https://discord.gg/6Q6FCpYM77" rel="noopener">Discord</a><a class="lang" href="en.html">EN</a></nav>
+</div></header>
+<main>
+<section class="wrap post"><h1>¡Gracias por comprar Cube Unbound!</h1><div class="dlbox" id="compra"><p>Buscando tu compra…</p></div><h2>Y ahora</h2><ol><li>Descarga el zip y descomprímelo donde quieras.</li><li>Abre <code>CubeUnbound.exe</code>, pega tu clave con <b>Ctrl+V</b> y pulsa <b>Activar</b>. Sólo esa vez necesita internet.</li><li>Cada compra vale para 3 PCs. Si cambias de ordenador, escríbenos a Neurostudios.contacto@gmail.com y liberamos uno.</li></ol><p>Dudas y fallos: el <a href="https://discord.gg/6Q6FCpYM77" rel="noopener">Discord</a>.</p></section><script>(function(){var api="https://cube-unbound-tienda.neurostudios-contacto.workers.dev";var box=document.getElementById("compra");
+var sid=new URLSearchParams(location.search).get("session_id")||"";
+function esc(t){var d=document.createElement("div");d.textContent=t;return d.innerHTML}
+function show(l){var dl=api+"/descargar?clave="+encodeURIComponent(l.clave);
+ box.innerHTML='<p>Gracias, <b>'+esc(l.nombre)+'</b>. Esta es tu clave:</p><p class="key"><code id="k">'+esc(l.clave)+'</code></p>'+
+ '<p><button class="btn ghost" id="copy">Copiar la clave</button> <a class="btn big" href="'+dl+'">Descargar el juego</a></p>'+
+ '<p class="small dim">Guárdala: sirve para descargar las versiones nuevas desde esta misma dirección y para activar el juego en tus PCs.</p>';
+ document.getElementById("copy").onclick=function(){navigator.clipboard&&navigator.clipboard.writeText(l.clave).then(function(){document.getElementById("copy").textContent="Copiada"})};}
+if(!sid){box.innerHTML="<p>Aquí aparece tu clave justo después de pagar. Si ya compraste y no la tienes, mira <a href=\"comprar.html#clave\">cómo recuperarla</a>.</p>";return}
+var tries=0;(function poll(){fetch(api+"/compra?sesion="+encodeURIComponent(sid),{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
+ if(d.ok)return show(d);if(++tries<40)return setTimeout(poll,2500);
+ box.innerHTML="<p>El pago se hizo pero tu clave tarda en llegar. Recarga la página en un minuto; si no aparece, escríbenos a Neurostudios.contacto@gmail.com con el recibo de Stripe.</p>"})
+ .catch(function(){if(++tries<40)setTimeout(poll,2500)})})();})();</script>
+</main>
+<footer><div class="wrap">
+  <div class="social"><a href="https://ragnaropk.github.io/cube-unbound-wiki/" rel="noopener">Wiki</a><a href="https://discord.gg/6Q6FCpYM77" rel="noopener">Discord</a><a href="https://www.reddit.com/r/CubeUnbound/" rel="noopener">Reddit</a></div>
+  <p><a href="privacidad.html">Aviso de privacidad</a> · <a href="terminos.html">Términos de venta</a></p>
+  <p class="dim">Cube Unbound 2026</p>
+</div></footer>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "2e7e2164b6b44c80b615bdc271c537fc"}'></script>
+</body>
+</html>
