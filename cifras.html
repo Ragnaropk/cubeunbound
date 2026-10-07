@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cifras · Cube Unbound</title>
+<meta name="description" content="Cifras de Cube Unbound.">
+<meta property="og:title" content="Cifras · Cube Unbound">
+<meta property="og:description" content="Cifras de Cube Unbound.">
+<meta property="og:image" content="https://ragnaropk.github.io/img/portada.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/favicon.png">
+<link rel="stylesheet" href="web.css">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><img src="img/logo_small.jpg" alt=""><span>Cube Unbound</span></a>
+  <nav><a href="index.html">Inicio</a><a href="descargar.html">Descargar</a><a href="novedades.html">Novedades</a><a href="comprar.html">Comprar</a><a href="https://ragnaropk.github.io/cube-unbound-wiki/" rel="noopener">Wiki</a><a class="dc" href="https://discord.gg/6Q6FCpYM77" rel="noopener">Discord</a><a class="lang" href="en.html">EN</a></nav>
+</div></header>
+<main>
+<section class="wrap"><h1>Cifras</h1><p class="dim">Se actualiza cada medio minuto. Descargas = clics en el botón o en el enlace corto (los repetidos de la misma conexión en una hora no cuentan); personas = conexiones distintas.</p><div id="cifras" class="pillars"><div><p>Cargando…</p></div></div><h2>Por día (hora de México)</h2><div id="dias"></div><p class="small dim">Enlace que cuenta y lleva directo al zip: <code>https://cube-unbound-corazones.neurostudios-contacto.workers.dev/d/alfa-0.1</code></p></section><script>(function(){var api="https://cube-unbound-corazones.neurostudios-contacto.workers.dev";
+function n(x){return (x||0).toLocaleString("es-MX")}
+function get(u){return fetch(api+u,{cache:"no-store"}).then(function(r){return r.json()})}
+Promise.all([get("/descargas"),get("/waitlist/count")]).then(function(v){
+  var d=v[0],w=v[1],h="",t="";
+  Object.keys(d).forEach(function(k){var f=d[k];
+    h+='<div><h3>'+k+'</h3><p class="price">'+n(f.total)+' descargas</p><p>'+n(f.personas)+' personas distintas</p></div>';
+    var days=Object.keys(f.dias).reverse();
+    if(days.length)t+='<h3>'+k+'</h3><table class="days">'+days.map(function(x){return '<tr><td>'+x+'</td><td>'+n(f.dias[x])+'</td></tr>'}).join('')+'</table>';
+  });
+  h+='<div><h3>Lista de espera</h3><p class="price">'+n(w.n)+'</p><p>correos apuntados</p></div>';
+  document.getElementById("cifras").innerHTML=h;
+  document.getElementById("dias").innerHTML=t||"<p>Aún no hay descargas.</p>";
+}).catch(function(){document.getElementById("cifras").innerHTML="<div><p>No se pudo leer el contador.</p></div>"});
+})();</script>
+</main>
+<footer><div class="wrap">
+  <div class="social"><a href="https://ragnaropk.github.io/cube-unbound-wiki/" rel="noopener">Wiki</a><a href="https://discord.gg/6Q6FCpYM77" rel="noopener">Discord</a><a href="https://www.reddit.com/r/CubeUnbound/" rel="noopener">Reddit</a></div>
+  <p><a href="privacidad.html">Aviso de privacidad</a> · <a href="terminos.html">Términos de venta</a></p>
+  <p class="dim">Cube Unbound 2026</p>
+</div></footer>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "2e7e2164b6b44c80b615bdc271c537fc"}'></script>
+</body>
+</html>
