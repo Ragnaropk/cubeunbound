@@ -75,3 +75,5 @@ button{font:inherit;cursor:pointer}.lic{border:1px solid var(--line);border-radi
 .trap{position:absolute;left:-9999px;width:1px;height:1px}.rv-ok{color:var(--teal);font-weight:600}
 .rating-line{margin:8px 0 0}.rating-line a{color:var(--text)}
 #rv-tabs button.on{border-color:var(--gold);color:var(--gold)}
+.ladder{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:16px 0;max-width:520px}
+.ladder h3{margin-top:0}.ladder table{border-collapse:collapse;width:100%}.ladder td{padding:6px 0;border-bottom:1px solid var(--line)}.ladder td:last-child{text-align:right;color:var(--gold)}.ladder tr:first-child td{color:var(--gold)}
