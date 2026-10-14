@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Creadores · Cube Unbound</title>
+<meta name="description" content="Si haces vídeos o directos de Cube Unbound, deja el enlace y sal en los créditos como influencer fundador.">
+<meta property="og:title" content="Creadores · Cube Unbound">
+<meta property="og:description" content="Si haces vídeos o directos de Cube Unbound, deja el enlace y sal en los créditos como influencer fundador.">
+<meta property="og:image" content="https://ragnaropk.github.io/cubeunbound/img/portada.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/favicon.png">
+<link rel="stylesheet" href="web.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><img src="img/logo_small.jpg" alt=""><span>Cube Unbound</span></a>
+  <nav><a href="index.html">Inicio</a><a href="descargar.html">Descargar</a><a href="novedades.html">Novedades</a><a href="comprar.html">Comprar</a><a href="https://ragnaropk.github.io/cube-unbound-wiki/" rel="noopener">Wiki</a><a class="dc" href="https://discord.gg/6Q6FCpYM77" rel="noopener">Discord</a><a class="lang" href="en.html">EN</a></nav>
+</div></header>
+<main>
+<section class="wrap post"><h1>¿Haces vídeos o directos? Sal en los créditos</h1><p class="lead">Si subes un vídeo o haces un directo de Cube Unbound, déjanos el enlace y tu nombre sale en los créditos del juego como <b>Influencer fundador</b>. Da igual cuántos seguidores tengas: si es tu primer vídeo, también cuenta.</p><h2>Cómo funciona</h2><ol><li>Graba o transmite el juego en YouTube, Twitch, TikTok, Kick, Facebook, Instagram o X, en el idioma que quieras.</li><li>Pega aquí el enlace. El vídeo tiene que ser público y del juego.</li><li>Lo vemos (sólo para frenar el spam) y te añadimos a los créditos en la siguiente actualización. Tu vídeo sale además en esta página.</li></ol><div class="dlbox"><h2>Deja tu vídeo</h2><form id="cr-form" class="rv-form"><input id="cr-canal" maxlength="60" placeholder="Nombre de tu canal *"><input id="cr-url" maxlength="300" placeholder="Enlace de tu vídeo o directo *"><input id="cr-creditos" maxlength="40" placeholder="Nombre para los créditos (si es otro)"><input id="cr-contacto" maxlength="120" placeholder="Correo, Discord o red social (opcional, no se publica)"><textarea id="cr-mensaje" maxlength="500" rows="3" placeholder="Algo que nos quieras contar (opcional)"></textarea><input id="cr-web" class="trap" tabindex="-1" autocomplete="off" aria-hidden="true"><p><button class="btn" id="cr-send" type="submit">Enviar mi vídeo</button> <span id="cr-msg" class="dim small"></span></p><p class="small dim">Guardamos el nombre del canal, el enlace y, si lo pones, tu contacto (ver el <a href="privacidad.html">aviso de privacidad</a>).</p></form></div><h2>Ya lo jugaron<span id="cr-count" class="dim"></span></h2><div id="cr-list" class="cr-grid"><p class="dim">Cargando…</p></div><p>¿Necesitas el juego? <a href="descargar.html">Descárgalo gratis</a>. ¿Dudas? Escríbenos al <a href="https://discord.gg/6Q6FCpYM77" rel="noopener">Discord</a> o a Neurostudios.contacto@gmail.com.</p></section><section class="wrap post" id="en"><h2>Content creators (English)</h2><p>Did you make a video or a stream of Cube Unbound? Leave the link here and your name goes in the game credits as an <b>Influencer Founder</b>. Follower count does not matter: your first video counts too. YouTube, Twitch, TikTok, Kick, Facebook, Instagram or X, in any language. We watch it (only to stop spam) and add you in the next update.</p><p>Use <a href="#cr-form">the form above</a>: <i>Nombre de tu canal</i> = your channel name, <i>Enlace</i> = the link to your video, <i>Nombre para los créditos</i> = the name for the credits (optional) and <i>Correo, Discord o red social</i> = a contact, optional and never published.</p></section><script>(function(){var api="https://cube-unbound-corazones.neurostudios-contacto.workers.dev",en=false;
+var $=function(i){return document.getElementById(i)};
+function esc(t){var d=document.createElement("div");d.textContent=t==null?"":String(t);return d.innerHTML}
+function yt(u){var m=/[?&]v=([\w-]{6,20})/.exec(u);return m?m[1]:""}
+fetch(api+"/creadores",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){var l=d.creadores||[];
+ if(!l.length){$("cr-list").innerHTML='<p class="dim">'+(en?"Nobody yet. Be the first!":"Todavía nadie. ¡Sé el primero!")+'</p>';return}
+ $("cr-count").textContent=" ("+l.length+")";
+ $("cr-list").innerHTML=l.map(function(c){var id=c.plataforma=="YouTube"?yt(c.url):"";
+  return '<a class="cr" href="'+esc(c.url)+'" rel="noopener nofollow" target="_blank">'+(id?'<img src="https://i.ytimg.com/vi/'+id+'/mqdefault.jpg" alt="" loading="lazy">':'<span class="cr-ph">'+esc(c.plataforma)+'</span>')+
+  '<b>'+esc(c.canal)+'</b><span class="dim small">'+esc(c.plataforma)+'</span></a>'}).join("")
+}).catch(function(){$("cr-list").innerHTML='<p class="dim">'+(en?"Could not load the list.":"No se pudo cargar la lista.")+'</p>'});
+var f=$("cr-form");if(!f)return;f.onsubmit=function(ev){ev.preventDefault();var msg=$("cr-msg");
+ var canal=$("cr-canal").value.trim(),url=$("cr-url").value.trim();
+ if(canal.length<2){msg.textContent=en?"Write your channel name.":"Escribe el nombre de tu canal.";return}
+ if(!/^https?:\/\//.test(url)){msg.textContent=en?"Paste the full link to your video (https://...).":"Pega el enlace completo de tu vídeo (https://...).";return}
+ var t=document.querySelector('#cr-form [name="cf-turnstile-response"]');$("cr-send").disabled=true;msg.textContent=en?"Sending…":"Enviando…";
+ fetch(api+"/creadores",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({canal:canal,url:url,creditos:$("cr-creditos").value,contacto:$("cr-contacto").value,mensaje:$("cr-mensaje").value,web:$("cr-web").value,turnstile:t?t.value:""})})
+ .then(function(r){return r.json()}).then(function(d){
+  if(d.ok){f.innerHTML='<p class="rv-ok">'+(en?"Thank you! We will watch it and add you to the credits in the next update.":"¡Gracias! Lo vemos y te añadimos a los créditos en la siguiente actualización.")+'</p>';return}
+  msg.textContent=d.error=="enlace"?(en?"That link is not from YouTube, Twitch, TikTok, Kick, Facebook, Instagram or X. For other sites, write to us.":"Ese enlace no es de YouTube, Twitch, TikTok, Kick, Facebook, Instagram o X. Si es de otra web, escríbenos.")
+   :d.error=="demasiados"?(en?"You already sent several today. Thanks!":"Ya enviaste varios hoy. ¡Gracias!"):d.error=="robot"?(en?"Could not check you are not a robot: reload and try again.":"No pudimos comprobar que no eres un robot: recarga la página y vuelve a probar.")
+   :(en?"Could not send it. Try again.":"No se pudo enviar. Inténtalo otra vez.");
+  $("cr-send").disabled=false;if(window.turnstile)turnstile.reset()})
+ .catch(function(){msg.textContent=en?"Could not send it. Check your connection.":"No se pudo enviar. Revisa tu conexión.";$("cr-send").disabled=false})};
+})();</script>
+</main>
+<footer><div class="wrap">
+  <div class="social"><a href="https://ragnaropk.github.io/cube-unbound-wiki/" rel="noopener">Wiki</a><a href="https://discord.gg/6Q6FCpYM77" rel="noopener">Discord</a><a href="https://www.reddit.com/r/CubeUnbound/" rel="noopener">Reddit</a><a href="https://cubeunbound.itch.io/cubeunbound" rel="noopener">itch.io</a><a href="https://www.indiedb.com/games/cube-unbound" rel="noopener">IndieDB</a></div>
+  <p><a href="privacidad.html">Aviso de privacidad</a> · <a href="terminos.html">Términos de venta</a></p>
+  <p class="dim">Cube Unbound 2026</p>
+</div></footer>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "2e7e2164b6b44c80b615bdc271c537fc"}'></script>
+</body>
+</html>

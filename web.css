@@ -78,3 +78,13 @@ button{font:inherit;cursor:pointer}.lic{border:1px solid var(--line);border-radi
 .ladder{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:16px 0;max-width:520px}
 .ladder h3{margin-top:0}.ladder table{border-collapse:collapse;width:100%}.ladder td{padding:6px 0;border-bottom:1px solid var(--line)}.ladder td:last-child{text-align:right;color:var(--gold)}.ladder tr:first-child td{color:var(--gold)}
 .platforms{margin:10px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}.btn.plat{padding:6px 14px;font-size:.92rem}
+.dlpage h1{font-size:2.2rem;line-height:1.15}
+.dlgrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-areas:"head rv" "body rv";column-gap:40px;align-items:start}
+.dlhead{grid-area:head}.dlbody{grid-area:body}.dlrv{grid-area:rv}.dlrv .reviews{margin-top:18px}
+.dlrv #rv-list{max-height:60vh;overflow:auto;padding-right:8px}
+@media (max-width:900px){.dlgrid{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "rv" "body"}.dlrv #rv-list{max-height:70vh}.dlrv .reviews{margin-top:8px}}
+.dlbox .btn.ghost{margin-top:8px}
+.cr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:12px 0}
+.cr{display:flex;flex-direction:column;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;color:var(--text)}
+.cr:hover{border-color:var(--gold);text-decoration:none}.cr img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;border:0}
+.cr-ph{display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;border-radius:8px;background:var(--bg2);color:var(--dim);font-weight:700}
