@@ -95,3 +95,5 @@ button{font:inherit;cursor:pointer}.lic{border:1px solid var(--line);border-radi
 .dlpair .btn.ghost{font-size:.88rem;font-weight:600;padding-top:8px;padding-bottom:8px}
 .dlpage h1 .dim{font-weight:400}
 @media (max-width:560px){.dlpair{grid-template-columns:minmax(0,1fr)}.dlpair>div+div{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:14px}}
+.btn.android{background:#3DDC84;color:#0b2414}
+.dlpair .btn.android{font-size:1rem;padding-top:10px;padding-bottom:10px}
