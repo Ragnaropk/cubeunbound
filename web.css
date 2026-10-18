@@ -97,3 +97,4 @@ button{font:inherit;cursor:pointer}.lic{border:1px solid var(--line);border-radi
 @media (max-width:560px){.dlpair{grid-template-columns:minmax(0,1fr)}.dlpair>div+div{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:14px}}
 .btn.android{background:#3DDC84;color:#0b2414}
 .dlpair .btn.android{font-size:1rem;padding-top:10px;padding-bottom:10px}
+.crossplay{border:1px solid #3DDC84;background:rgba(61,220,132,.08);border-radius:12px;padding:10px 16px;margin:14px 0}.crossplay p{margin:4px 0}.crossplay b{color:#3DDC84}
