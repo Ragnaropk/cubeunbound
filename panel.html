@@ -29,7 +29,7 @@ function resumen(){call("GET","/admin/resumen").then(function(d){if(!d.ok){$("re
  $("res").innerHTML='<div><h3>Licencias</h3><p class="price">'+n+'</p><p>'+d.licencias.map(function(l){return esc(l.edicion)+" ("+esc(l.origen)+"): "+l.n}).join(" · ")+'</p></div>'+
  '<div><h3>Cobrado</h3><p class="price">'+(v/100).toFixed(2)+' USD</p><p>por Stripe</p></div>'+
  '<div><h3>PCs activados</h3><p class="price">'+d.activaciones+'</p><p>'+d.descargas+' descargas · '+d.revocadas+' revocadas</p></div>'+
- '<div><h3>Servidor</h3><p>Zip: '+esc(d.zip||"ninguno")+'</p><p>Firma: '+(d.firma?"lista":"FALTA LICENCIA_PRIVADA")+' · Stripe: '+(d.stripe?"listo":"sin configurar")+'</p></div>';buscar()})}
+ '<div><h3>Servidor</h3><p>'+["windows","android","linux"].map(function(k){var a=(d.archivos||{})[k];return k+": "+(a?esc(a.nombre)+(a.partes>1?" ("+a.partes+" trozos)":""):"ninguno")}).join("<br>")+'</p><p>Firma: '+(d.firma?"lista":"FALTA LICENCIA_PRIVADA")+' · Stripe: '+(d.stripe?"listo":"sin configurar")+'</p></div>';buscar()})}
 function buscar(){call("GET","/admin/licencias?q="+encodeURIComponent($("q").value)).then(function(d){if(!d.ok)return;
  $("lista").innerHTML=d.licencias.map(function(l){return '<div class="lic'+(l.revocada?" off":"")+'"><b><code>'+esc(l.clave)+'</code></b> · '+esc(l.nombre)+' · '+esc(l.email)+' · '+esc(l.edicion)+
  ' · '+esc(l.origen)+(l.importe?' · '+(l.importe/100).toFixed(2)+' '+esc(l.moneda):'')+(l.creditos?' · créditos: <b>'+esc(l.creditos)+'</b>':'')+'<br><span class="dim small">'+fecha(l.creada)+(l.nota?' · '+esc(l.nota):'')+' · '+l.descargas+' descargas · PCs '+l.equipos.length+'/'+l.pcs+'</span>'+
@@ -42,7 +42,7 @@ $("entrar").onclick=function(){T=$("tok").value.trim();try{localStorage.setItem(
 $("buscar").onclick=buscar;
 $("fund").onclick=function(){call("GET","/admin/fundadores").then(function(d){$("fundlist").value=d.ok?d.nombres.join("\n"):"Token incorrecto";$("fundlist").hidden=false})};
 $("crear").onclick=function(){call("POST","/admin/licencias",{nombre:$("n").value,email:$("m").value,edicion:$("ed").value,pcs:+$("pcs").value||3,nota:$("nota").value,creditos:$("cr").value}).then(function(d){
- $("nueva").innerHTML=d.ok?'Clave creada: <code>'+esc(d.clave)+'</code> · descarga: <code>'+esc(api+"/descargar?clave="+d.clave)+'</code>':"No se pudo crear";resumen()})};
+ $("nueva").innerHTML=d.ok?'Clave creada: <code>'+esc(d.clave)+'</code> · descarga: '+["windows","android","linux"].map(function(k){return '<code>'+esc(api+"/descargar?clave="+d.clave+"&plataforma="+k)+'</code>'}).join(" · "):"No se pudo crear";resumen()})};
 if(T)resumen();})();</script><script>(function(){var api="https://cube-unbound-corazones.neurostudios-contacto.workers.dev";var $=function(i){return document.getElementById(i)};var estado="pendiente";
 function T(){try{return localStorage.getItem("cu_admin")||""}catch(x){return ""}}
 function esc(t){var d=document.createElement("div");d.textContent=t==null?"":String(t);return d.innerHTML}
