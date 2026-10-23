@@ -101,3 +101,14 @@ button{font:inherit;cursor:pointer}.lic{border:1px solid var(--line);border-radi
 .patches{border-left:4px solid var(--gold);background:var(--panel);border-radius:8px;padding:8px 14px;margin:10px 0}.patches p{margin:4px 0}
 .btn.linux{background:#F5C211;color:#1d1a08}
 .dlpair .btn.linux{font-size:1rem;padding-top:10px;padding-bottom:10px}
+.presshead{display:flex;gap:24px;align-items:center;flex-wrap:wrap}.presslogo{max-width:320px;width:100%;height:auto}
+.press .facts th{white-space:nowrap;vertical-align:top}.press .facts td{vertical-align:top}
+.presscreators,.pressdesc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+.pressgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.presslogos{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.pressgrid a,.presslogos a{display:flex;flex-direction:column;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px;color:var(--text);font-size:.88rem}
+.pressgrid a:hover,.presslogos a:hover{border-color:var(--gold);text-decoration:none}
+.pressgrid img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
+.presslogos img{width:100%;height:120px;object-fit:contain;background:repeating-conic-gradient(#2a2535 0 25%,#1f1b29 0 50%) 0 0/16px 16px;border-radius:8px}
+.presslinks{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+@media (max-width:700px){.presscreators,.pressdesc{grid-template-columns:minmax(0,1fr)}}
