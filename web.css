@@ -137,3 +137,4 @@ button{font:inherit;cursor:pointer}.lic{border:1px solid var(--line);border-radi
 .req .reqt thead th{font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--dim);background:none}
 .req .reqt tbody th{color:var(--dim);font-weight:600;white-space:nowrap;padding-right:10px}
 .req p{margin:8px 0 0}
+.price .cobro{font-size:.6em;color:var(--dim);font-weight:600;white-space:nowrap}
