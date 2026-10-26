@@ -129,3 +129,11 @@ button{font:inherit;cursor:pointer}.lic{border:1px solid var(--line);border-radi
 .plat .btn[aria-disabled]{opacity:.45;cursor:not-allowed}.plat ol{margin:0;padding-left:20px;color:var(--dim)}
 .have-key{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;background:var(--panel);border:1px solid var(--gold);border-radius:14px;padding:18px 22px;margin:22px 0}
 .have-key h2{margin:0 0 4px}.have-key p{margin:0;color:var(--dim)}
+.reqs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:12px 0 16px}
+.req{background:var(--panel,var(--bg2));border:1px solid var(--line);border-top:4px solid #888;border-radius:12px;padding:12px 14px;min-width:0}
+.req.windows{border-top-color:#3A96DD}.req.android{border-top-color:#3DDC84}.req.linux{border-top-color:#F5C211}
+.req h3{margin:0 0 6px}.req table.reqt{width:100%;display:table;border-collapse:collapse;font-size:.9rem;margin:0}
+.req .reqt th,.req .reqt td{padding:5px 8px 5px 0;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.req .reqt thead th{font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--dim);background:none}
+.req .reqt tbody th{color:var(--dim);font-weight:600;white-space:nowrap;padding-right:10px}
+.req p{margin:8px 0 0}
