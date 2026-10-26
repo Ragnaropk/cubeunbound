@@ -113,3 +113,19 @@ button{font:inherit;cursor:pointer}.lic{border:1px solid var(--line);border-radi
 .presslinks{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 @media (max-width:700px){.presscreators,.pressdesc{grid-template-columns:minmax(0,1fr)}}
 .mecenas{margin-top:28px}.mec-names{font-size:1.05rem;line-height:1.8}.mec-names.big{font-size:1.3rem;font-weight:700;color:var(--gold)}
+.buyer-hero{background:linear-gradient(135deg,var(--panel),var(--bg2));border:1px solid var(--gold);border-radius:18px;padding:26px 28px;margin:10px 0 22px}
+.buyer-hero h1{margin-top:0}
+.keycard{display:flex;flex-wrap:wrap;align-items:center;gap:12px;background:var(--bg);border:1px dashed var(--gold);border-radius:12px;padding:12px 16px;margin-top:12px}
+.keycard code{font-size:1.35rem;letter-spacing:.06em;color:var(--gold);font-weight:700}
+.keyin #mk{flex:1;min-width:min(240px,100%);font-size:1.2rem;letter-spacing:.05em;padding:10px 12px;border-radius:8px}
+.keyin #mk.shake{animation:shake .4s}@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.plat-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:14px 0 20px}
+.plat{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.plat.windows{border-top-color:#3A96DD}.plat.android{border-top-color:#3DDC84}.plat.linux{border-top-color:#F5C211}
+.plat-head{display:flex;gap:12px;align-items:center}.plat-head h3{margin:0}.plat-head p{margin:2px 0 0}
+.plat-ico{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:var(--bg2)}.plat-ico svg{width:26px;height:26px;fill:currentColor}
+.plat.windows .plat-ico{color:#3A96DD}.plat.android .plat-ico{color:#3DDC84}.plat.linux .plat-ico{color:#F5C211}
+.plat .btn{text-align:center}.plat.windows .btn{background:#3A96DD;color:#fff}.plat.android .btn{background:#3DDC84;color:#0b2414}.plat.linux .btn{background:#F5C211;color:#1d1a08}
+.plat .btn[aria-disabled]{opacity:.45;cursor:not-allowed}.plat ol{margin:0;padding-left:20px;color:var(--dim)}
+.have-key{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;background:var(--panel);border:1px solid var(--gold);border-radius:14px;padding:18px 22px;margin:22px 0}
+.have-key h2{margin:0 0 4px}.have-key p{margin:0;color:var(--dim)}
