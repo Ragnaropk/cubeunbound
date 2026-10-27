@@ -27,7 +27,10 @@ function fecha(ms){return ms?new Date(ms).toLocaleString("es-MX"):""}
 function resumen(){call("GET","/admin/resumen").then(function(d){if(!d.ok){$("res").innerHTML="<p>Token incorrecto.</p>";return}
  var v=0,n=0;d.licencias.forEach(function(l){n+=l.n;v+=l.importe||0});
  $("res").innerHTML='<div><h3>Licencias</h3><p class="price">'+n+'</p><p>'+d.licencias.map(function(l){return esc(l.edicion)+" ("+esc(l.origen)+"): "+l.n}).join(" · ")+'</p></div>'+
- '<div><h3>Cobrado</h3><p class="price">'+(v/100).toFixed(2)+' USD</p><p>por Stripe</p></div>'+
+ (d.cobrado?(function(){var usd=0,lines=d.cobrado.map(function(c){var m=(c.moneda||"usd").toUpperCase(),k=c.moneda==="usd"?1:(d.cambio_usd||{})[c.moneda];
+   if(k)usd+=c.importe/k;return (c.importe/100).toFixed(2)+" "+esc(m)+" ("+c.n+")"});
+   return '<div><h3>Cobrado</h3><p class="price">≈ '+(usd/100).toFixed(0)+' USD</p><p>'+lines.join("<br>")+'<br>por Stripe, ya con impuestos</p></div>'})():
+ '<div><h3>Cobrado</h3><p class="price">'+(v/100).toFixed(2)+'</p><p>por Stripe (mezcla monedas: redespliega la tienda)</p></div>')+
  '<div><h3>PCs activados</h3><p class="price">'+d.activaciones+'</p><p>'+d.descargas+' descargas · '+d.revocadas+' revocadas</p></div>'+
  '<div><h3>Servidor</h3><p>'+["windows","android","linux"].map(function(k){var a=(d.archivos||{})[k];return k+": "+(a?esc(a.nombre)+(a.partes>1?" ("+a.partes+" trozos)":""):"ninguno")}).join("<br>")+'</p><p>Firma: '+(d.firma?"lista":"FALTA LICENCIA_PRIVADA")+' · Stripe: '+(d.stripe?"listo":"sin configurar")+'</p></div>';buscar()})}
 function buscar(){call("GET","/admin/licencias?q="+encodeURIComponent($("q").value)).then(function(d){if(!d.ok)return;
