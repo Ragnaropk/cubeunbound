@@ -139,3 +139,4 @@ button{font:inherit;cursor:pointer}.lic{border:1px solid var(--line);border-radi
 .req p{margin:8px 0 0}
 .price .cobro{font-size:.6em;color:var(--dim);font-weight:600;white-space:nowrap}
 .btn[hidden]{display:none}
+.kitbox{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:6px 18px;margin:10px 0 18px}
