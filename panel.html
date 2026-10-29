@@ -98,13 +98,16 @@ function load(){call("GET",null,"?estado="+estado).then(function(d){if(!d.ok){$(
   '<p class="small">'+esc(r.descripcion)+'</p>Descarga: <a href="'+esc(r.enlace)+'" rel="noopener nofollow" target="_blank">'+esc(r.enlace)+'</a>'+
   (r.imagen?'<br>Imagen: <a href="'+esc(r.imagen)+'" rel="noopener nofollow" target="_blank">'+esc(r.imagen)+'</a>':'')+(r.contacto?'<br><span class="small">Contacto: '+esc(r.contacto)+'</span>':'')+'<br>'+
   (r.estado!="aprobado"?'<button data-map="'+r.id+'">Aprobar</button> ':'')+(r.estado!="borrado"?'<button data-mdel="'+r.id+'">Borrar</button> ':'')+(r.estado!="pendiente"?'<button data-mpen="'+r.id+'">A pendiente</button> ':'')+
-  '<button data-mpro="'+r.id+'" data-on="'+(r.probado?0:1)+'">'+(r.probado?"Quitar «probado»":"✔ Marcar probado por mí")+'</button></div>'}).join("")||"<p>Nada aquí.</p>"})}
+  '<button data-mpro="'+r.id+'" data-on="'+(r.probado?0:1)+'">'+(r.probado?"Quitar «probado»":"✔ Marcar probado por mí")+'</button> '+
+  '<button data-mimg="'+r.id+'">Cambiar imagen</button>'+(r.imagen?'<br><img src="'+esc(r.imagen)+'" alt="" style="max-width:220px;max-height:120px;margin-top:6px;border-radius:6px" referrerpolicy="no-referrer">':'')+'</div>'}).join("")||"<p>Nada aquí.</p>"})}
 document.addEventListener("click",function(ev){var b=ev.target;
  if(b.parentNode&&b.parentNode.id=="md-tabs"){estado=b.dataset.e;load()}
  if(b.dataset.map)call("POST",{id:+b.dataset.map,accion:"aprobar"}).then(load);
  if(b.dataset.mdel&&confirm("¿Borrar este mod? Deja de salir en el catálogo."))call("POST",{id:+b.dataset.mdel,accion:"borrar"}).then(load);
  if(b.dataset.mpen)call("POST",{id:+b.dataset.mpen,accion:"pendiente"}).then(load);
- if(b.dataset.mpro)call("POST",{id:+b.dataset.mpro,accion:b.dataset.on=="1"?"probado":"no_probado"}).then(load)});
+ if(b.dataset.mpro)call("POST",{id:+b.dataset.mpro,accion:b.dataset.on=="1"?"probado":"no_probado"}).then(load);
+ if(b.dataset.mimg){var u=prompt("Enlace de la imagen (vale el de la página de imgbb o imgur; vacío = sin imagen):","");
+  if(u!==null)call("POST",{id:+b.dataset.mimg,accion:"imagen",imagen:u.trim()}).then(function(d){if(!d.ok)alert("Ese enlace no vale (https y no de Discord).");load()})}});
 $("entrar").addEventListener("click",function(){setTimeout(load,300)});if(T())load();})();</script>
 </main>
 <footer><div class="wrap">
