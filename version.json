@@ -1,11 +1,11 @@
 {
   "formato": 1,
   "gratis": {
-    "version": "0.2.4",
+    "version": "0.2.4.1",
     "url": "https://cubeunbound.com/descargar.html"
   },
   "pago": {
-    "version": "0.6",
+    "version": "0.6.1",
     "url": "https://cubeunbound.com/mis-descargas.html"
   }
 }
