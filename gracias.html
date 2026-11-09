@@ -27,7 +27,10 @@ var i=document.getElementById("mk");if(i){i.focus();i.classList.add("shake");set
 var sid=new URLSearchParams(location.search).get("session_id")||"";
 function esc(t){var d=document.createElement("div");d.textContent=t;return d.innerHTML}
 var titles={Mecenas:"¡Ya eres Mecenas de Cube Unbound!",Apoyo:"¡Ya eres Patrocinador de Cube Unbound!",Fundador:"¡Ya eres Fundador de Cube Unbound!"};
-function show(l){var pack=l.pack||"Fundador";document.getElementById("hero-t").textContent=titles[pack]||titles.Fundador;
+function show(l){if(l.apoyo){document.getElementById("hero-t").textContent="¡Gracias por apoyar Cube Unbound!";
+ document.getElementById("hero-s").innerHTML="Gracias, <b>"+esc(l.nombre||"")+"</b>. Con tu ayuda el juego sigue creciendo. Tu apoyo no incluye el juego: si lo quieres, está en <a href=\"comprar.html\">comprar</a>.";
+ box.innerHTML="";return}
+ var pack=l.pack||"Fundador";document.getElementById("hero-t").textContent=titles[pack]||titles.Fundador;
  document.getElementById("hero-s").innerHTML="Gracias, <b>"+esc(l.nombre)+"</b>. Con tu apoyo el juego sigue adelante. Esta es tu clave: guárdala, sirve para descargar las versiones nuevas y activar el juego.";
  box.innerHTML='<div class="keycard"><span class="small dim">Tu clave</span><code id="k">'+esc(l.clave)+'</code><button class="btn ghost" id="copy">Copiar</button></div>';
  document.getElementById("copy").onclick=function(){navigator.clipboard&&navigator.clipboard.writeText(l.clave).then(function(){document.getElementById("copy").textContent="Copiada ✓"})};
