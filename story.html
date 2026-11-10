@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>08:14 · Prologue comic of Cube Unbound</title>
+<meta name="description" content="A village where every day is the same. Until 08:14. The prologue comic of Cube Unbound, made with screenshots from the game itself.">
+<meta property="og:title" content="08:14 · Prologue comic of Cube Unbound">
+<meta property="og:description" content="A village where every day is the same. Until 08:14. The prologue comic of Cube Unbound, made with screenshots from the game itself.">
+<meta property="og:image" content="https://cubeunbound.com/img/historia/v01.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/favicon.png">
+<link rel="stylesheet" href="web.css">
+<style>
+:root{--fondo:#0d0e12;--papel:#f3e3a6;--tinta:#16120c;--luz:#e9e6dc;--tenue:#9a9788;--acento:var(--gold)}
+*{box-sizing:border-box}
+html{color-scheme:dark;scroll-behavior:smooth}
+.solo-lector{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+html[data-lang="es"] [lang="en"],html[data-lang="en"] [lang="es"]{display:none}
+.portada{min-height:78vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:72px 16px 40px}
+.hora{margin:0;font-family:"Consolas","SF Mono",ui-monospace,monospace;font-weight:700;letter-spacing:.06em;
+  font-size:clamp(4.2rem,17vw,9.5rem);line-height:1;color:#f1efe6;text-shadow:0 0 28px rgba(228,185,74,.35)}
+.sub{margin:.8rem 0 0;font-size:clamp(.95rem,2.6vw,1.2rem);letter-spacing:.14em;text-transform:uppercase;color:var(--tenue)}
+.lema{margin:2rem 0 0;max-width:30em;font-size:clamp(1rem,2.6vw,1.25rem);font-style:italic;color:#cfcabb}
+.bajar{margin-top:2.4rem;color:var(--tenue);font-size:.85rem;letter-spacing:.1em}
+.tira{max-width:1000px;margin:0 auto;padding:0 16px 40px;display:flex;flex-direction:column;gap:18px}
+.doble{display:flex;flex-direction:column;gap:6px}
+.panel{position:relative;margin:0;container-type:inline-size;background:#000;border:3px solid #000;box-shadow:0 6px 28px rgba(0,0,0,.55);overflow:hidden}
+.panel img{display:block;width:100%;height:100%;object-fit:cover}
+.estrecho{width:min(100%,640px);align-self:center}
+.cap{position:absolute;margin:0;padding:.45em .75em;background:var(--papel);color:var(--tinta);border:2px solid var(--tinta);
+  font-size:max(12.5px,2.2cqw);line-height:1.3;font-weight:600;box-shadow:3px 3px 0 rgba(0,0,0,.45)}
+.cap.peq{font-size:max(11.5px,1.8cqw);font-style:italic;padding:.3em .6em}
+.cap.hora-cap{font-family:"Consolas","SF Mono",ui-monospace,monospace;font-size:max(18px,4.4cqw);letter-spacing:.08em;padding:.25em .6em}
+.bub{position:absolute;margin:0;padding:.6em .85em;background:#fff;color:var(--tinta);border:2px solid var(--tinta);border-radius:1.1em;
+  font-size:max(12.5px,2.3cqw);line-height:1.25;font-weight:600;text-align:center;box-shadow:3px 3px 0 rgba(0,0,0,.4)}
+.bub::after{content:"";position:absolute;left:var(--tx,50%);bottom:-.5em;width:.75em;height:.75em;background:#fff;
+  border-right:2px solid var(--tinta);border-bottom:2px solid var(--tinta);transform:translateX(-50%) rotate(45deg)}
+.bub.up::after{bottom:auto;top:-.5em;transform:translateX(-50%) rotate(225deg)}
+.bub.tl::after{left:-.5em;bottom:auto;top:var(--ty,50%);transform:translateY(-50%) rotate(135deg)}
+.bub.broken{border-style:dashed;font-size:max(14px,3.4cqw);text-shadow:1.5px 0 #e0263a,-1.5px 0 #27c3e8}
+.gl{display:inline-block;animation:gl 4.6s steps(1) infinite}
+@keyframes gl{0%,90%,100%{transform:none;color:inherit}92%{transform:translate(2px,-3px)}94%{transform:translate(-2px,2px);color:#c4202c}96%{transform:none}}
+.rare{display:inline-block;font-family:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC","Yu Gothic",sans-serif;animation:rare 2.4s steps(1) infinite}
+@keyframes rare{0%,58%,80%,100%{transform:none}62%{transform:translate(1px,-2px)}70%{transform:translate(-2px,1px)}}
+body.anim .panel,body.anim .doble{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+body.anim .panel.visto,body.anim .doble.visto{opacity:1;transform:none}
+body.anim .doble .panel{opacity:1;transform:none}
+.fin{max-width:1000px;margin:0 auto;padding:12vh 16px 14vh;text-align:center}
+.fin h2{margin:0;font-size:clamp(1.8rem,6vw,3.2rem);font-weight:600;letter-spacing:.04em}
+.fin .ia{margin:2.4rem 0 0;color:var(--tenue);font-size:.95rem}
+.fin .sitio{margin:.6rem 0 0;font-size:.95rem}
+@media (max-width:640px){
+  /* en el móvil las imágenes son pequeñas: los textos pasan debajo, a tamaño legible */
+  .panel{aspect-ratio:auto !important;overflow:visible;display:flex;flex-direction:column;padding-bottom:10px}
+  .panel img{height:auto}
+  .estrecho{width:100%}
+  .cap,.bub{position:static !important;width:auto !important;max-width:none !important;margin:8px 10px 0;box-shadow:none;font-size:15px}
+  .cap.peq{font-size:14px}
+  .cap.hora-cap{font-size:20px;align-self:flex-start}
+  .bub::after{display:none}
+  .bub.broken{font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .gl,.rare{animation:none}
+  body.anim .panel,body.anim .doble{opacity:1 !important;transform:none !important;transition:none}
+}
+.fin .ctas{justify-content:center;margin-top:2rem}
+</style>
+<link rel="alternate" hreflang="es" href="https://cubeunbound.com/historia.html">
+<link rel="alternate" hreflang="en" href="https://cubeunbound.com/story.html">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="en.html"><img src="img/logo_small.jpg" alt=""><span>Cube Unbound</span></a>
+  <nav><a href="en.html">Home</a><a href="descargar.html#en">Download</a><a href="novedades.html">News</a><a href="comprar.html">Buy</a><a href="https://wiki.cubeunbound.com/en.html" rel="noopener">Wiki</a><a class="dc" href="https://discord.gg/6Q6FCpYM77" rel="noopener">Discord</a><a class="lang" href="historia.html">ES</a></nav>
+</div></header>
+<main>
+<div class="comic">
+<header class="portada">
+  <h1 class="hora">08:14</h1>
+  <p class="sub">Prologue of Cube Unbound · comic</p>
+  <p class="lema">Reading the story is one thing. Living it is another.</p>
+  <p class="bajar" aria-hidden="true">↓</p>
+</header>
+<div class="tira">
+<figure class="panel " id="v01" style="aspect-ratio:1600/900">
+  <img src="img/historia/v01.jpg" width="1600" height="900" alt="The village at dawn seen from the hill: red roofs, the bell tower and smoke from the chimneys." loading="eager">
+  <p class="cap " style="left:2.5%;top:3.5%;max-width:46%">Hundreds of suns. All alike.</p>
+  <figcaption class="solo-lector">The village at dawn seen from the hill: red roofs, the bell tower and smoke from the chimneys.</figcaption>
+</figure>
+<figure class="panel " id="v02" style="aspect-ratio:1600/900">
+  <img src="img/historia/v02.jpg" width="1600" height="900" alt="The villager, seen from behind, standing among the golden wheat of the vegetable garden." loading="eager">
+  <p class="cap " style="left:2.5%;top:3.5%;max-width:50%">Seven steps east. Three sprouts. One in the basket.</p>
+  <figcaption class="solo-lector">The villager, seen from behind, standing among the golden wheat of the vegetable garden.</figcaption>
+</figure>
+<figure class="panel " id="v03" style="aspect-ratio:1600/900">
+  <img src="img/historia/v03.jpg" width="1600" height="900" alt="The blacksmith and the villager, face to face by the well, at noon." loading="lazy">
+  <p class="bub " style="left:3%;top:4%;width:42%;--tx:71%">Good day to work. Or to do nothing at all, depending how you see it.</p><p class="cap " style="left:2.5%;bottom:4%;max-width:40%">You smile. You nod.</p>
+  <figcaption class="solo-lector">The blacksmith and the villager, face to face by the well, at noon.</figcaption>
+</figure>
+<div class="doble" id="v04">
+<figure class="panel " id="v04a" style="aspect-ratio:1600/433">
+  <img src="img/historia/v04a.jpg" width="1600" height="433" alt="The innkeeper behind the counter of the inn, in the morning, with a mug in her hand." loading="lazy">
+  <p class="bub " style="left:3%;top:6%;width:42%;--tx:92%">If you go out at night, take a torch.</p><p class="cap peq" style="right:2.5%;bottom:5%">Yesterday.</p>
+  <figcaption class="solo-lector">The innkeeper behind the counter of the inn, in the morning, with a mug in her hand.</figcaption>
+</figure>
+<figure class="panel " id="v04b" style="aspect-ratio:1600/433">
+  <img src="img/historia/v04b.jpg" width="1600" height="433" alt="The same scene in the afternoon: the innkeeper repeats the gesture and the line." loading="lazy">
+  <p class="bub " style="left:3%;top:6%;width:42%;--tx:92%">If you go out at night, take a torch.</p><p class="cap peq" style="right:2.5%;bottom:5%">Today.</p>
+  <figcaption class="solo-lector">The same scene in the afternoon: the innkeeper repeats the gesture and the line.</figcaption>
+</figure>
+</div>
+<figure class="panel " id="v05" style="aspect-ratio:1600/900">
+  <img src="img/historia/v05.jpg" width="1600" height="900" alt="The captain of the guard, standing still by the lantern-lit wall at dusk." loading="lazy">
+  <p class="bub tl" style="left:53%;top:36%;width:34%;--ty:50%">The north road is dangerous.</p><p class="cap " style="left:2.5%;bottom:4%;max-width:42%">You never asked what lies beyond the hill.</p>
+  <figcaption class="solo-lector">The captain of the guard, standing still by the lantern-lit wall at dusk.</figcaption>
+</figure>
+<figure class="panel " id="v06" style="aspect-ratio:1600/900">
+  <img src="img/historia/v06.jpg" width="1600" height="900" alt="The village at nightfall: lit windows, the bell tower and, among the trees, two yellow eyes." loading="lazy">
+  <p class="cap " style="left:2.5%;top:3.5%;max-width:46%">The bells ring. Wolves and slimes. Off to bed.</p>
+  <figcaption class="solo-lector">The village at nightfall: lit windows, the bell tower and, among the trees, two yellow eyes.</figcaption>
+</figure>
+<figure class="panel " id="v07" style="aspect-ratio:1600/900">
+  <img src="img/historia/v07.jpg" width="1600" height="900" alt="The vegetable garden again: the villager from behind, closer, behind the wheat." loading="lazy">
+  <p class="cap " style="left:2.5%;bottom:4%;max-width:46%">Another sprout. Same bent leaf.</p>
+  <figcaption class="solo-lector">The vegetable garden again: the villager from behind, closer, behind the wheat.</figcaption>
+</figure>
+<figure class="panel " id="v08" style="aspect-ratio:1600/900">
+  <img src="img/historia/v08.jpg" width="1600" height="900" alt="The well again, exactly as before: the blacksmith repeats his line." loading="lazy">
+  <p class="bub " style="left:3%;top:4%;width:42%;--tx:71%">Good day to w<span class="gl">o</span>rk. Or to do nothing at all, depending how you see it.</p><p class="cap " style="left:2.5%;bottom:4%;max-width:46%">Word for word. This time you don't smile.</p>
+  <figcaption class="solo-lector">The well again, exactly as before: the blacksmith repeats his line.</figcaption>
+</figure>
+<figure class="panel " id="v09" style="aspect-ratio:1600/900">
+  <img src="img/historia/v09.jpg" width="1600" height="900" alt="The villager in bed at night by lantern light, eyes almost closed." loading="lazy">
+  <p class="cap " style="left:2.5%;bottom:4%;max-width:46%">You close your eyes. Tomorrow will be the same.</p>
+  <figcaption class="solo-lector">The villager in bed at night by lantern light, eyes almost closed.</figcaption>
+</figure>
+<figure class="panel " id="v10" style="aspect-ratio:1600/900">
+  <img src="img/historia/v10.jpg" width="1600" height="900" alt="The same room by day: the blacksmith in the doorway with his arm raised." loading="lazy">
+  <p class="cap hora-cap" style="left:2.5%;top:3.5%">08:14.</p><p class="bub " style="left:56%;top:3%;width:38%;--tx:12%">Good day to work…</p><p class="cap " style="left:2.5%;bottom:4%;max-width:48%">The blacksmith had never set foot in your house.</p>
+  <figcaption class="solo-lector">The same room by day: the blacksmith in the doorway with his arm raised.</figcaption>
+</figure>
+<figure class="panel estrecho" id="v11" style="aspect-ratio:1000/900">
+  <img src="img/historia/v11.jpg" width="1000" height="900" alt="Close-up of the blacksmith, the colours split into red and blue." loading="lazy">
+  <p class="bub up broken" style="left:8%;bottom:4%;width:84%;--tx:50%">Go-go-go-… day to wo-wo-w<span class="rare">龘</span>rk…</p>
+  <figcaption class="solo-lector">Close-up of the blacksmith, the colours split into red and blue.</figcaption>
+</figure>
+<figure class="panel " id="v12" style="aspect-ratio:1600/900">
+  <img src="img/historia/v12.jpg" width="1600" height="900" alt="The world, stopped: the blacksmith frozen with his arm raised, dust hanging in the air and a crack in the window. Only the villager, sitting up in bed, moves." loading="lazy">
+  <p class="cap " style="left:2.5%;top:3.5%;max-width:40%">Silence. Not even the stream.</p><p class="cap " style="right:2.5%;bottom:4%;max-width:46%">And for the first time, you are the one who moves.</p>
+  <figcaption class="solo-lector">The world, stopped: the blacksmith frozen with his arm raised, dust hanging in the air and a crack in the window. Only the villager, sitting up in bed, moves.</figcaption>
+</figure>
+</div>
+<section class="fin">
+  <h2>Continue in the game.</h2>
+  <p class="ia">Made with the help of AI.</p>
+
+  <div class="ctas"><a class="btn" href="en.html">Discover the game</a><a class="btn ghost" href="https://discord.gg/6Q6FCpYM77" rel="noopener">Join the Discord</a></div>
+</section>
+</div>
+<script>(function(){if(!("IntersectionObserver" in window)||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+document.body.classList.add("anim");var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add("visto");io.unobserve(x.target)}})},{threshold:0.08});
+document.querySelectorAll(".tira > .panel, .tira > .doble").forEach(function(p){io.observe(p)})})();</script>
+
+</main>
+<footer><div class="wrap">
+  <div class="social"><a href="https://wiki.cubeunbound.com/" rel="noopener">Wiki</a><a href="https://discord.gg/6Q6FCpYM77" rel="noopener">Discord</a><a href="https://www.reddit.com/r/CubeUnbound/" rel="noopener">Reddit</a><a href="https://cubeunbound.itch.io/cubeunbound" rel="noopener">itch.io</a><a href="https://www.indiedb.com/games/cube-unbound" rel="noopener">IndieDB</a><a href="https://x.com/ZeroOriginI" rel="noopener">X</a><a href="prensa.html">Press kit</a></div>
+  <p><a href="privacidad.html">Privacy</a> · <a href="terminos.html">Terms</a></p>
+  <p class="dim">SapianV · Cube Unbound 2026</p>
+</div></footer>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "2e7e2164b6b44c80b615bdc271c537fc"}'></script>
+</body>
+</html>
