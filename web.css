@@ -145,3 +145,10 @@ button{font:inherit;cursor:pointer}.lic{border:1px solid var(--line);border-radi
 .tiendas{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
 .btn.steam{background:#1b2838;color:#fff;border:1px solid #66c0f4}.btn.steam:hover{background:#2a475e}
 .btn.play{background:#01875f;color:#fff}.btn.play:hover{filter:brightness(1.1)}
+.storyteaser{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;color:var(--text)}
+.storyteaser:hover{text-decoration:none;border-color:var(--gold)}
+.storyteaser img{display:block;width:100%;height:100%;aspect-ratio:16/9;object-fit:cover}
+.storyteaser div{padding:22px 26px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.storyteaser .clock{font-family:Consolas,"SF Mono",ui-monospace,monospace;font-weight:700;font-size:2.6rem;line-height:1;letter-spacing:.05em}
+.storyteaser p{margin:0;color:var(--dim)}.storyteaser .btn{align-self:flex-start;margin-top:10px}
+@media (max-width:700px){.storyteaser{grid-template-columns:minmax(0,1fr)}}
