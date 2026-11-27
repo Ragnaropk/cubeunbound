@@ -168,3 +168,6 @@ button{font:inherit;cursor:pointer}.lic{border:1px solid var(--line);border-radi
 .skform input[type=file]{max-width:100%}.skgrid>div{min-width:0}
 .iab{border-left-color:#e1306c}
 .iab p{margin:.3em 0}
+.mine-tag{display:inline-block;margin-left:8px;padding:1px 9px;border-radius:10px;background:var(--gold);color:#1a1a1a;font-size:12px;font-weight:700;vertical-align:middle}
+.dlos.mine{border-left:3px solid var(--gold);padding-left:10px;margin-bottom:10px}
+.plat.mine{outline:2px solid var(--gold);outline-offset:2px}
