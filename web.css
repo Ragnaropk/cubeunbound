@@ -166,3 +166,5 @@ button{font:inherit;cursor:pointer}.lic{border:1px solid var(--line);border-radi
 @media (max-width:760px){.skgrid{grid-template-columns:minmax(0,1fr)}.skprev{position:static;order:-1}}
 .note code,.skform code{overflow-wrap:anywhere}
 .skform input[type=file]{max-width:100%}.skgrid>div{min-width:0}
+.iab{border-left-color:#e1306c}
+.iab p{margin:.3em 0}
