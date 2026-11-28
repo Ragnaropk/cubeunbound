@@ -61,18 +61,23 @@ $("lote").onclick=function(){var n=Math.max(1,Math.min(200,+$("lt-n").value||0))
  function done(){b.disabled=false;if(!keys.length)return;var a=document.createElement("a");
   a.href=URL.createObjectURL(new Blob([keys.join("\n")+"\n"],{type:"text/plain"}));a.download="claves_"+nota.replace(/[^a-z0-9]+/gi,"_").toLowerCase()+".txt";
   document.body.appendChild(a);a.click();a.remove();if(keys.length>=n)$("lt-msg").textContent=keys.length+" claves creadas y descargadas. Búscalas luego por la nota.";resumen()}};
-if(T)resumen();})();</script><script>(function(){var tienda="https://cube-unbound-tienda.neurostudios-contacto.workers.dev",corazones="https://cube-unbound-corazones.neurostudios-contacto.workers.dev",$=function(i){return document.getElementById(i)};
+if(T)resumen();})();</script><script>(function(){var tienda="https://cube-unbound-tienda.neurostudios-contacto.workers.dev",corazones="https://cube-unbound-corazones.neurostudios-contacto.workers.dev",fijo={"autor": "Un juego de Santiago Herrera (NeuroStudios)", "autor_en": "A game by Santiago Herrera (NeuroStudios)", "comunidad": ["Cerberus Matos", "ZaikoSP", "Palta", "joaquin", "Meme", "CHAMANICOD", "Fachan", "Lagz", "minutoz"]},$=function(i){return document.getElementById(i)};
 function T(){try{return localStorage.getItem("cu_admin")||""}catch(x){return ""}}
 function uniq(a){var s={},o=[];a.forEach(function(n){n=String(n||"").trim();if(n&&n!="Comprador de itch.io"&&!s[n]){s[n]=1;o.push(n)}});return o}
+function corto(n){var p=String(n||"").trim().split(/\s+/);return p.length<2?p[0]:p[0]+" "+p[1].charAt(0).toUpperCase()+"."}
 $("cred-json").onclick=function(){$("cred-msg").textContent="Juntando nombres…";
  fetch(tienda+"/admin/fundadores",{headers:{"authorization":"Bearer "+T()}}).then(function(r){return r.json()}).then(function(d){
   if(!d.ok){$("cred-msg").textContent="Entra con el token arriba.";return}
-  var g={Mecenas:[],Apoyo:[],Fundador:[]};(d.packs||[]).forEach(function(x){(g[x.pack]||g.Fundador).push(x.nombre)});
+  if((d.packs||[]).some(function(x){return x.elegido===undefined})){$("cred-msg").textContent="Antes pega el worker nuevo de la tienda (tienda/worker.js, 27-nov): sin él no se sabe qué nombres acortar.";return}
+  // Santiago, 27-nov: quien no eligió un nombre para los créditos sale con el nombre de pila y la inicial («Ana G.»)
+  var g={Mecenas:[],Apoyo:[],Fundador:[]};(d.packs||[]).forEach(function(x){if(String(x.nombre).trim()=="Comprador de itch.io")return;(g[x.pack]||g.Fundador).push(x.elegido?x.nombre:corto(x.nombre))});
   return (corazones?fetch(corazones+"/creadores",{cache:"no-store"}).then(function(r){return r.json()}).catch(function(){return {}}):Promise.resolve({})).then(function(c){
    var sec=[{titulo:"Mecenas",titulo_en:"Patrons",nombres:uniq(g.Mecenas)},{titulo:"Patrocinadores",titulo_en:"Sponsors",nombres:uniq(g.Apoyo)},
     {titulo:"Fundadores",titulo_en:"Founders",nombres:uniq(g.Fundador)},
-    {titulo:"Creadores de contenido",titulo_en:"Content creators",nombres:uniq((c.creadores||[]).map(function(x){return x.creditos}))}].filter(function(s){return s.nombres.length});
-   var out={formato:1,generado:new Date().toISOString().slice(0,10),gracias:"Muchas gracias por el apoyo",gracias_en:"Thank you so much for your support",secciones:sec};
+    {titulo:"Creadores de contenido",titulo_en:"Content creators",nombres:uniq((c.creadores||[]).map(function(x){return x.creditos}))},
+    {titulo:"Comunidad",titulo_en:"Community",nombres:uniq(fijo.comunidad||[])}].filter(function(s){return s.nombres.length});
+   var out={formato:1,generado:new Date().toISOString().slice(0,10),autor:fijo.autor,autor_en:fijo.autor_en,
+    gracias:"Muchas gracias por el apoyo",gracias_en:"Thank you so much for your support",secciones:sec};
    var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)+"\n"],{type:"application/json"}));a.download="creditos.json";
    document.body.appendChild(a);a.click();a.remove();
    $("cred-msg").textContent=sec.map(function(s){return s.titulo+": "+s.nombres.length}).join(" · ")})}).catch(function(){$("cred-msg").textContent="Error de red."})};
